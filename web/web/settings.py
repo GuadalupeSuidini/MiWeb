@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS=['E:/CoderHouse/A.CreandoMiWeb/MiWeb/web/primApp/static']
 
 # Application definition
 
