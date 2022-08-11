@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+
+  
+  {% load static %}
+
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -12,18 +16,14 @@
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
   
-  <link href="./assets/apple-icon-180x180.png" rel="apple-touch-icon">
-  <link href="./assets/favicon.ico" rel="icon">
+  <link href="{% static '/assets/apple-icon-180x180.png' %}/" rel="apple-touch-icon">
+  <link href="{% static '/assets/favicon.ico' %}/" rel="icon">
 
-
+  <link href="{% static 'css/main.82cfd66e.css' %}" rel="stylesheet" />
 
   <title>Title page</title>  
 
-  {% load static %}
-{% static '"./main.82cfd66e.css"' %}
-<link href='{% static "/main.82cfd66e.css" %}' rel="stylesheet">
-
-</head>
+<link href="./main.82cfd66e.css" rel="stylesheet"></head>
 
 <body>
 
@@ -49,6 +49,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor.</p>
       </div>
+
       <ul class="nav">
         <li><a href="./index.html" title="">Home</a></li>
         <li><a href="./about.html" title="">About</a></li>
@@ -85,7 +86,7 @@
     <div class="grid-sizer"></div>
     
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-12.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-12.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -98,7 +99,7 @@
 
     
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-05.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-05.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -110,7 +111,7 @@
     </div>
 
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-13.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-13.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -121,7 +122,7 @@
       </a>
     </div>
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-04.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-04.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -133,7 +134,7 @@
     </div>
     
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-07.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-07.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -145,7 +146,7 @@
     </div>
 
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-11.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-11.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -157,7 +158,7 @@
     </div>
 
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-10.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-10.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
@@ -168,7 +169,7 @@
       </a>
     </div>
     <div class="grid-item">
-      <img class="img-responsive" alt="" src="./assets/images/img-03.jpg">
+      <img class="img-responsive" alt="" src="static/assets/images/img-03.jpg">
       <a href="./project.html" class="project-description">
         <div class="project-text-holder">
           <div class="project-text-inner">
