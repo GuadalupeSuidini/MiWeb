@@ -42,7 +42,7 @@
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					
 					
-					<li><a href="#contact">Contact</a></li>
+					
 					<li style="background: rgba(255, 255, 0, 0.51);"><a href="{% url 'inicio' %}">Home</a></li>
 				</ul>
 			</div>
@@ -59,18 +59,19 @@
 <section id="home" style="padding:160px 0;background-image: url(https://picsum.photos/id/1062/1200); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">CHOOSE OUR EXPERTS for<br/> THE BEST PLAN YOU CAN GET <br/><br/><i class="fa fa-star roundicon"></i>
+			<h1 class="toptitle">{{mensaje}}<br/>  <br/><br/><i class="fa fa-star roundicon"></i>
 			</h1>	
-										
+			<h4></h4>							
 			<div class="contactstyle topform">										
-				<form action="{% url 'registrar' %}" method="POST" >
+				<form action="{% url 'login' %}" method="POST" >
 					
 					
 						{% csrf_token %}
-						{{form.as_p}}
-						
-                        
-						<input style="background: rgba(213, 43, 43, 0.51);"type="submit"  value="Registar"> 
+						{{miformulario.as_p}}
+						<form type="text" name="Usuario" placeholder="user">
+						<form type="text" name="Contraseña" placeholder="password">
+					
+						<button type="submit" class="btn btn-primary">Ingresar</button>
 					
 				</form>
 				
