@@ -12,7 +12,13 @@ from .forms import datos_usuarios
 
 def inicio(request):
     return render(request,"padre.html")
-###
+
+
+########################################################################################3
+
+def servicios(request):
+    return render(request,"services.html")
+#############################################################33
 # ingreso y registro de ususarios   
 def ingreso_usuarios(request):
 
@@ -61,7 +67,7 @@ def registro(request):
 
 
 
-def ingreso_usuario(request):
+def act_usuario(request):
 
     if request.method == "POST":
 
@@ -71,11 +77,11 @@ def ingreso_usuario(request):
 
             data = miformulario.cleaned_data
 
-            datos_ingreso = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], celular=data['celular'])
+            datos_ingreso = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
         
             datos_ingreso.save()
 
-            return redirect("Listadedatos")
+            return redirect("inicio")
 
         return render(request, 'act_datos.html')
     else:
@@ -84,6 +90,14 @@ def ingreso_usuario(request):
 
 
     return render(request, "act_datos.html", {"miformulario": miformulario})
+
+def lista_usuario (request):
+
+    lista_usu = usuarios.objects.all()
+
+    contexto = {"lista_usu": lista_usu}
+
+    return render(request, "misdatos.html", contexto)
 
 
 ######################################################################################################################

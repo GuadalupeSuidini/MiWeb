@@ -59,7 +59,7 @@
 <section id="home" style="padding:160px 0;background-image: url(https://picsum.photos/id/1062/1200); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">{{mensaje}}<br/>  <br/><br/><i class="fa fa-star roundicon"></i>
+			<h1 class="toptitle"><br/>Ingrese Sus Datos Personales <br/> Y Datos de Contacto<br/><i class="fa fa-star roundicon"></i>
 			</h1>	
 			<h4></h4>							
 			<div class="contactstyle topform">										
@@ -67,7 +67,12 @@
 					
 					
 						{% csrf_token %}
-						{{miformulario.as_p}}
+                        {% for lista in lista_usu }
+							<li>{{lista}}</li>
+						{% endfor %}
+							{{miformulario.as_p}}
+
+						
 						<form type="text" name="Usuario" placeholder="user">
 						<form type="text" name="Contraseña" placeholder="password">
 					

@@ -56,6 +56,7 @@
         <h3>BIENVENIDO {{user.username}}</h3>
         <li><a href="{% url 'logout' %}" title="">Cerrar Sesion</a></li>
         <li><a href="{% url 'usuarios' %}" title="">Mi Perfil</a></li>
+        <li><a href="{% url 'misdatos' %}" title="">Mis Datos</a></li>
         <div class="project-text-inner">
           
        
@@ -67,7 +68,7 @@
         {% endif %}
         
         
-        <li><a href="static/services.html" title="">Services</a></li>
+        <li><a href="{% url 'servicios' %}" title="">Services</a></li>
         <li><a href="" title="">Contact</a></li>
         
         
