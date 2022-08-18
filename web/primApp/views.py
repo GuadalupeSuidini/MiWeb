@@ -5,8 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from .models import usuarios
-from .forms import datos_usuarios
+from .models import mascotas, usuarios
+from .forms import datos_mascotas, datos_usuarios
 # Create your views here.
 
 
@@ -77,9 +77,9 @@ def act_usuario(request):
 
             data = miformulario.cleaned_data
 
-            datos_ingreso = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
+            datos_animal = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
         
-            datos_ingreso.save()
+            datos_animal.save()
 
             return redirect("inicio")
 
@@ -101,3 +101,29 @@ def lista_usuario (request):
 
 
 ######################################################################################################################
+
+#### mascota
+
+def datos_mascota(request):
+
+    if request.method == "POST":
+
+        mascota = datos_mascotas(request.POST)
+
+        if mascota.is_valid():
+
+            data = mascota.cleaned_data
+
+            datos_animal = mascotas(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], vacunas=data['vacunas'], descripcion=data['descripcion'])
+        
+            datos_animal.save()
+
+            return redirect("inicio")
+
+        return render(request, 'datos_mascotas.html')
+    else:
+
+        mascota = datos_mascotas()
+
+
+    return render(request, "datos_mascotas.html", {"mascota": mascota})
