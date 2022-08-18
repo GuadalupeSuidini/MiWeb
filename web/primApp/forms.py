@@ -14,4 +14,13 @@ class datos_usuarios(forms.Form):
     celular = forms.IntegerField()
     entidad = forms.CharField()
 
+
+class datos_mascotas(forms.Form):
+
+    nombre = forms.CharField()
+    raza = forms.CharField()
+    edad = forms.IntegerField()
+    vacunas = forms.CharField()
+    descripcion = forms.CharField()
+
    

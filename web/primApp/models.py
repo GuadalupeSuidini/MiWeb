@@ -17,3 +17,12 @@ class usuarios(models.Model):
     
     def __str__(self) -> str:
         return f"{self.nombre} - {self.apellido}"
+
+class mascotas(models.Model):
+
+    nombre = models.CharField(max_length=20)
+    raza = models.CharField(max_length=20)
+    edad = models.IntegerField()
+    vacunas = models.CharField(max_length=60)
+    descripcion = models.CharField(max_length=150)
+    
