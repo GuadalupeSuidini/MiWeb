@@ -63,18 +63,14 @@
 			</h1>	
 			<h4></h4>							
 			<div class="contactstyle topform">										
-				<form action="{% url 'login' %}" method="POST" >
+				<form action="{% url 'usuarios' %}" method="POST" >
 					
 					
 						{% csrf_token %}
-                        {% for lista in lista_usu }
-							<li>{{lista}}</li>
-						{% endfor %}
+                        
 							{{miformulario.as_p}}
 
-						
-						<form type="text" name="Usuario" placeholder="user">
-						<form type="text" name="Contraseña" placeholder="password">
+												
 					
 						<button type="submit" class="btn btn-primary">Ingresar</button>
 					
