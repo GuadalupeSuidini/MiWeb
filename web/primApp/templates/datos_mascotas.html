@@ -56,6 +56,7 @@
 
 <!-- INTRO
 ================================================== -->
+{% block contenido %}
 <section id="home" style="padding:160px 0;background-image: url(https://picsum.photos/id/1062/1200); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
@@ -63,7 +64,7 @@
 			</h1>	
 			<h4></h4>							
 			<div class="contactstyle topform">										
-				<form action="{% url 'login' %}" method="POST" >
+				<form action="{% url 'mascotas' %}" method="POST" enctype="multipart/form-data" >
 					
 					
 						{% csrf_token %}
@@ -86,7 +87,7 @@
 <!-- ABOUT
 ================================================== -->
 
-		
+{% endblock %}			
 <!-- CONTACT
 ================================================== -->
 <section id="contact" class="margintop60 nopadding" style="background:#292929;">
@@ -132,7 +133,7 @@
 		<div class="clearfix"></div>
 </section>
 <!-- THE END OF SECTIONS -->	
-	
+
 <!-- FOOTER
 ================================================== -->
 <footer id="footer" class="footer2">

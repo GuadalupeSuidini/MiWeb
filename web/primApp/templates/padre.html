@@ -21,7 +21,7 @@
 
   <link href="{% static 'css/main.82cfd66e.css' %}" rel="stylesheet" />
 
-  <title>Petite</title>  
+  <title>Mis mascotas en adopcion</title>  
 
 <link href="./main.82cfd66e.css" rel="stylesheet"></head>
 
@@ -36,19 +36,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="static/index.html" class="navbar-brand">Mashup Template</a>
+    <a href="{% url 'inicio' %}" class="navbar-brand">Menu Principal</a>
   </div>
 
   <nav class="sidebar">
     <div class="navbar-collapse" id="navbar-collapse">
       <div class="site-header hidden-xs">
-          <a class="site-brand" href="static/index.html" title="">
+          <a class="site-brand" href="{% url 'inicio' %}" title="">
             <img class="img-responsive site-logo" alt="" src="static/assets/images/mashup-logo.svg">
-            Petite
+            Menu Principal
           </a>
-        <p>
-        Hola
-        </p>
         
       </div>
 
@@ -58,9 +55,10 @@
 
           <h3>BIENVENIDO {{user.username}}</h3>
           
-          <li><a href="{% url 'usuarios' %}" title="">Mi Perfil</a></li>
-          <li><a href="{% url 'misdatos' %}" title="">Mis Datos</a></li>
+          <li><a href="{% url 'misdatos' %}" title="">Mi Perfil</a></li>
+          
           <li><a href="{% url 'mascotas' %}" title="">Ingresar Mascota</a></li>
+          <li><a href="{% url 'mismascotas' %}" title="">Mis Mascota</a></li>
           <div class="project-text-inner">
             
         
@@ -97,114 +95,180 @@
     </div> 
   </nav>
 </header>
-<main class="" id="main-collapse">
 
-<!-- Add your site or app content here -->
- 
 
-  <div class="grid">
-  <div class="gutter-sizer"></div>
-    <div class="grid-sizer"></div>
-    
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Golfo.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Golfo</h3>
-            <p>Mas info...</p>
+
+
+  <main class="" id="main-collapse">
+
+  <!-- Add your site or app content here -->
+  
+
+    <div class="gutter-sizer"></div>
+      <div class="grid-sizer"></div>
+        
+      {% if user.is_authenticated %}
+          {% for p in lista_mas %}
+          <h3>{{p.nombre}}</h3>
+          <div class="mascotas">
+            {% if p.imagen %}
+            <img class="img-responsive" src="{{ p.imagen.url }}" alt="Mascota 1">
+            {% endif %}
+            <a href="#">Modificar</a>
           </div>
-        </div>
-      </a>
-    </div>
+          {% endfor %}
 
-    
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Tilo.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Tilo</h3>
-            <p>Mas info...</p>
-          </div>
-        </div>
-      </a>
-    </div>
+      {% endif %}  
+      </div>  
+    </div-->
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Honnie.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Honnie</h3>
-            <p>Mas info...</p>
-          </div>
-        </div>
-      </a>
-    </div>
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Isidro.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Isidro</h3>
-            <p>Mas info...</p>
-          </div>
+    <div class="grid">
+      <div class="gutter-sizer"></div>
+        <div class="grid-sizer"></div>
+        
+        <div class="grid-item">
+        {% for p in lista_mas %}
+          <img class="img-responsive" alt="" src="{{ p.imagen.url }}">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>{{p}}</h3>
+                <p>Discover more</p>  
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}  
         </div>
-      </a>
-    </div>
+      
     
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Rocky.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Rocky</h3>
-            <p>Mas info...</p>
-          </div>
-        </div>
-      </a>
-    </div>
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Ginebra.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Ginebra</h3>
-            <p>Mas info...</p>
-          </div>
-        </div>
-      </a>
-    </div>
 
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Lola.jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Lola</h3>
-            <p>Mas info...</p>
-          </div>
+
+
+
+
+    <div class="grid">
+      <div class="gutter-sizer"></div>
+        <div class="grid-sizer"></div>
+        
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-12.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Pantalla n1</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
         </div>
-      </a>
-    </div>
-    <div class="grid-item">
-      <img class="img-responsive" alt="" src="{% static 'assets/images/img-Filomena (2).jpg' %}">
-      <a href="./project.html" class="project-description">
-        <div class="project-text-holder">
-          <div class="project-text-inner">
-            <h3>Filomena</h3>
-            <p>Mas info...</p>
-          </div>
+
+        
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-05.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>PANTALLA N 1</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
         </div>
-      </a>
+
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-13.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-04.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+        
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-07.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-11.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-10.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+        <div class="grid-item">
+          <img class="img-responsive" alt="" src="static/assets/images/img-03.jpg">
+          {% if user.is_authenticated %}
+          <a href="static/project.html" class="project-description">
+            <div class="project-text-holder">
+              <div class="project-text-inner">
+                <h3>Vivamus vestibulum</h3>
+                <p>Discover more</p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+
+        </div>
+
     </div>
-    
   </div>
-</div>
 
 
 <script>

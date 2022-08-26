@@ -8,7 +8,7 @@ class usuariosAdmin(admin.ModelAdmin):
 
 class mascotasAdmin(admin.ModelAdmin):
     
-    list_display = ["nombre", "raza", "edad", "vacunas", "descripcion"]
+    list_display = ["nombre", "raza", "edad", "vacunas", "descripcion", "imagen"]
     search_fields = ["nombre"]
 
 

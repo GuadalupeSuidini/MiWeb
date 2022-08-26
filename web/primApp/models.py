@@ -9,7 +9,7 @@ class usuarios(models.Model):
     apellido = models.CharField(max_length=50)
     correo = models.EmailField()
     direccion = models.CharField(max_length=30)
-    nacimiento = models.DateTimeField()
+    nacimiento = models.DateField()
     pais = models.CharField(max_length=20)
     departamento = models.CharField(max_length=20)
     celular = models.IntegerField()
@@ -25,4 +25,6 @@ class mascotas(models.Model):
     edad = models.IntegerField()
     vacunas = models.CharField(max_length=60)
     descripcion = models.CharField(max_length=150)
+    imagen = models.ImageField(null=True, blank=True)
+    
     

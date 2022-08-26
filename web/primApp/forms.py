@@ -1,6 +1,15 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    password1 = forms.CharField(label='Contraseña',widget= forms.PasswordInput)
+    password2 = forms.CharField(label='Contraseña',widget= forms.PasswordInput)
+    class meta:
+        model = User
+        fields = {'username','email','password1','password2'}
+        help_texts = {k:"" for k in fields }
 
 class datos_usuarios(forms.Form):
 
@@ -22,5 +31,6 @@ class datos_mascotas(forms.Form):
     edad = forms.IntegerField()
     vacunas = forms.CharField()
     descripcion = forms.CharField()
+    imagen = forms.ImageField()
 
    

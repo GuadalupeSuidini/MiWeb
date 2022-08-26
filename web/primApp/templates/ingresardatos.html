@@ -41,8 +41,8 @@
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					
-					<li style="background: rgba(84, 189, 221, 0.51);"><a href="{% url 'usuarios' %}">Ingresar Datos De Contacto</a></li>
 					
+					<li style="background: rgba(94, 220, 150, 0.51);"><a href="{% url 'misdatos' %}">Mis Datos</a></li>
 					<li style="background: rgba(255, 255, 0, 0.51);"><a href="{% url 'inicio' %}">Home</a></li>
 				</ul>
 			</div>
@@ -53,68 +53,42 @@
 	</nav>
 </div>
 </header>	
-{% block contenido %}
-	<!-- INTRO
-	================================================== -->
-	<section id="home" style="padding:160px 0;background-image: url(https://picsum.photos/id/1062/1200); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
-		<div class="container">
-			<div class="textwidget">
-				<h1 class="toptitle"><br/>Datos Personales <br/><i class="fa fa-star roundicon"></i>
-				</h1>	
-				<h4></h4>							
-				<div class="contactstyle topform">										
+
+<!-- INTRO
+================================================== -->
+<section id="home" style="padding:160px 0;background-image: url(https://picsum.photos/id/1062/1200); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
+	<div class="container">
+		<div class="textwidget">
+			<h1 class="toptitle"><br/>Datos Personales <br/><i class="fa fa-star roundicon"></i>
+			</h1>	
+			<h4></h4>							
+			<div class="contactstyle topform">										
+				<form action="{% url 'usuarios' %}" method="POST" >
 					
-						
-						
-							{% csrf_token %}
-						
-							<div class="mb-6 row">
-								<label for="nombre" class="col-sm-6 col-form-label">Nombre Usuario</label>
-								<div class="col-sm-10">
-								<input type="text" readonly class="form-control-plaintext" id="nombre" value="{{user.username}}">
-								</div>
+					
+						{% csrf_token %}
+                    
+						<div class="mb-6 row">
+							<label for="nombre" class="col-sm-6 col-form-label">Nombre Usuario</label>
+							<div class="col-sm-10">
+							  <input type="text" readonly class="form-control-plaintext" id="nombre" value="{{user.username}}">
 							</div>
+						</div>
 
-								{% for datos in lista_usu %}
-								<div class="mb-6 row">
-									<label for="nombre" class="col-sm-6 col-form-label">Nombre Usuario</label>
-									<div class="col-sm-10">
-									<input type="text" readonly class="form-control-plaintext" id="nombre" value="{{datos}}">
-									</div>
-								</div>
-
-								
-								
-								
-						
-								<div>
-
-
-									
-									<button>
-										<a href="{% url 'ediusuarios' datos.id %}">Editar</a>
-	
-
-									</button>
-									<button>
-										
-										<a href="{% url 'eliminardatos' datos.id %}">Eliminar</a>
-
-									</button>
-								</div>
-								
-									
-								{% endfor %}
-						
-						
+							{{miformulario}}
 							
-					
-					
-				</div>								
-			</div>
-			</div>
-	</section>
-{% endblock contenido %}
+                            <input type="submit" value="Guardar"> 
+							</div>
+								
+                             
+						
+				</form>
+				
+			</div>								
+		</div>
+		</div>
+</section>
+
 <!-- ABOUT
 ================================================== -->
 
