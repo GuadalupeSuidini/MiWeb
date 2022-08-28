@@ -20,8 +20,8 @@ urlpatterns = [
     path('Usuarios',ing_usuarios, name = 'usuarios'),
     path('Misdatos',lista_usuario, name = 'misdatos'),
     path('Logout/',LogoutView.as_view(template_name='logout.html'), name="logout"),
-    path('edita-datos/<int:id>',editarusuario, name = 'ediusuarios'),
-    path('elimina-datos/<int:id>',eliminardatos, name = 'eliminardatos'),
+    path('edita-datos/<id>/',editarusuario, name = 'ediusuarios'),
+    path('elimina-datos/<id>/',eliminardatos, name = 'eliminardatos'),
 ############################################################
 
 

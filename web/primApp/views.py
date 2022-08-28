@@ -1,6 +1,4 @@
-from multiprocessing import AuthenticationError
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -94,61 +92,29 @@ def lista_usuario (request):
     return render(request, "misdatos.html", contexto)
 
 def eliminardatos(request, id):
+    usuarioss = get_object_or_404(usuarios, id=id)
+    usuarioss.delete()
+    return redirect(to="misdatos")
 
-    if request.method == "POST":
-        
-        datos = usuarios.objects.get(id=id)
-
-        datos.delete()
-
-        lista_usu = usuarios.objects.all()
-
-        contexto = {"lista_usu": lista_usu}
-
-        return render(request,"padre.html", contexto)
-
+    
 
 def editarusuario(request, id):
 
-    usuario = usuarios.objects.get(id=id)
+    usu = get_object_or_404(usuarios, id=id)
+
+    data = {
+        "form": datos_usuarios(instance=usu)
+    }
 
     if request.method == 'POST':
-
-        formulario = datos_usuarios(request.POST)
-        
-
+        formulario = datos_usuarios(data=request.POST, instance=usu, files=request.FILES)
         if formulario.is_valid():
+            formulario.save()
+            return redirect(to="misdatos")
+        data["form"] = formulario 
 
-            data = formulario.cleaned_data
 
-            usuario.nombre = data['nombre']
-            usuario.apellido = data['apellido']
-            usuario.correo = data['correo']
-            usuario.direccion = data['direccion']
-            usuario.nacimiento = data['nacimiento']
-            usuario.pais = data['pais']
-            usuario.departamento = data['departamento']
-            usuario.celular = data['celular']
-            usuario.entidad = data['entidad']
-
-            usuario.save()
-
-            return render(request, "misdatos.html")
-    else: 
-
-        formulario= datos_usuarios(initial={
-        'nombre' :  usuario.nombre, 
-        'apellido' : usuario.apellido,
-        'correo' : usuario.correo,
-        'direccion' : usuario.direccion,
-        'nacimiento' : usuario.nacimiento, 
-        'pais' : usuario.pais, 
-        'departamento' : usuario.departamento, 
-        'celular' : usuario.celular, 
-        'entidad' : usuario.entidad, 
-        })
-
-    return render(request, "act_datos.html", {"formulario":formulario, "id":usuario.id})
+    return render(request, "act_datos.html",data)
 
 ######################################################################################################################
 
