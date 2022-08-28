@@ -33,6 +33,10 @@ class datos_mascotas(forms.ModelForm):
         
         model = mascotas
         fields = '__all__'
+        
+        widgets = {
+            "edad": forms.SelectDateWidget()
+        }    
 
 
    

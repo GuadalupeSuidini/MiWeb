@@ -69,34 +69,6 @@ def registro(request):
 
     return render(request, "registro.html", {"form": form})
 
-
-
-#def ing_usuario(request):
-    
-
-#    if request.method == "POST":
-
-#        miformulario = datos_usuarios(request.POST)
-
-#        if miformulario.is_valid():
-
-#            data = miformulario.cleaned_data
-
-#            datos_usu = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
-        
-#            datos_usu.save()
-
- #           return redirect("inicio")
-
- #       return render(request, 'ingresardatos.html')
- #   else:
-
-  #      miformulario = datos_usuarios()
-
-
-   # return render(request, "ingresardatos.html", {"miformulario": miformulario})
-
-
 def ing_usuarios(request):
     data = {
         'form': datos_usuarios()
@@ -107,6 +79,7 @@ def ing_usuarios(request):
         formulario = datos_usuarios(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            data["mensaje"] = "guardado correctamente"
         else:
             data["form"] = formulario
             

@@ -23,8 +23,8 @@ class mascotas(models.Model):
 
     nombre = models.CharField(max_length=20)
     raza = models.CharField(max_length=20)
-    edad = models.IntegerField()
-    vacunas = models.CharField(max_length=60)
+    edad = models.DateField()
+    vacunas = models.TextField(max_length=150)
     descripcion = models.TextField(max_length=150)
     imagen = models.ImageField(null=True, blank=True)
     
