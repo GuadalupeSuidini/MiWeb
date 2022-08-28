@@ -63,10 +63,10 @@
 			</h1>	
 			<h4></h4>							
 			<div class="contactstyle topform">										
-				<form action="{% url 'usuarios' %}" method="POST" >
+				
 					
 					
-						{% csrf_token %}
+						
                     
 						<div class="mb-6 row">
 							<label for="nombre" class="col-sm-6 col-form-label">Nombre Usuario</label>
@@ -74,8 +74,10 @@
 							  <input type="text" readonly class="form-control-plaintext" id="nombre" value="{{user.username}}">
 							</div>
 						</div>
-
-							{{miformulario}}
+						<form action="" method="POST" enctype="multipart/form-data">
+							
+							{% csrf_token %}
+							{{ form }}
 							
                             <input type="submit" value="Guardar"> 
 							</div>

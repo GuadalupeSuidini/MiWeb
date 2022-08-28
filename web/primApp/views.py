@@ -71,30 +71,46 @@ def registro(request):
 
 
 
-def act_usuario(request):
+#def ing_usuario(request):
     
 
-    if request.method == "POST":
+#    if request.method == "POST":
 
-        miformulario = datos_usuarios(request.POST)
+#        miformulario = datos_usuarios(request.POST)
 
-        if miformulario.is_valid():
+#        if miformulario.is_valid():
 
-            data = miformulario.cleaned_data
+#            data = miformulario.cleaned_data
 
-            datos_usu = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
+#            datos_usu = usuarios(nombre=data['nombre'], apellido=data['apellido'], correo=data['correo'], direccion=data['direccion'], nacimiento=data['nacimiento'], pais=data['pais'], departamento=data['departamento'], celular=data['celular'], entidad=data['entidad'])
         
-            datos_usu.save()
+#            datos_usu.save()
 
-            return redirect("inicio")
+ #           return redirect("inicio")
 
-        return render(request, 'ingresardatos.html')
-    else:
+ #       return render(request, 'ingresardatos.html')
+ #   else:
 
-        miformulario = datos_usuarios()
+  #      miformulario = datos_usuarios()
 
 
-    return render(request, "ingresardatos.html", {"miformulario": miformulario})
+   # return render(request, "ingresardatos.html", {"miformulario": miformulario})
+
+
+def ing_usuarios(request):
+    data = {
+        'form': datos_usuarios()
+
+    }
+
+    if request.method == 'POST':
+        formulario = datos_usuarios(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'ingresardatos.html', data)        
 
 def lista_usuario (request):
 
